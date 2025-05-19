@@ -3,7 +3,7 @@ name: Build and push Docker image to ECR (public)
 on:
   push:
     branches:
-      - main-v*
+      - release-*
 
 permissions:
   contents: read

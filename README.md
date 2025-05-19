@@ -10,6 +10,20 @@
 
 Kubernetes-native declarative infrastructure for GCP.
 
+## Changes by Edenlab LLC
+
+This fork by [Edenlab LLC](https://edenlab.io/) introduces null checks to **prevent panics** in Go code. 
+It also adds GitHub Actions [workflows](.github/workflows) to build and publish Docker images.
+
+Images are published to the public ECR gallery:  
+[public.ecr.aws/edenlabllc/core.cluster-api-provider-gcp](https://gallery.ecr.aws/edenlabllc/core.cluster-api-provider-gcp)
+
+Changes are made in the [release-1.8](https://github.com/edenlabllc/cluster-api-provider-gcp/tree/release-1.8) branch 
+and released under the
+[v1.8.2](https://github.com/edenlabllc/cluster-api-provider-gcp/releases/tag/v1.8.2) tag.
+
+See [edenlabllc/cluster-api-provider-gcp#3](https://github.com/edenlabllc/cluster-api-provider-gcp/pull/3) for details.
+
 ## What is the Cluster API Provider GCP?
 
 The [Cluster API](https://github.com/kubernetes-sigs/cluster-api) brings declarative Kubernetes-style APIs to cluster creation, configuration and management. The API itself is shared across multiple cloud providers allowing for true Google Cloud hybrid deployments of Kubernetes.
