@@ -23,6 +23,8 @@ jobs:
     steps:
       - name: Checkout main repository
         uses: actions/checkout@v4
+        # fetch only single commit (default)
+        fetch-depth: 1
 
       - name: Configure AWS credentials
         uses: aws-actions/configure-aws-credentials@v4

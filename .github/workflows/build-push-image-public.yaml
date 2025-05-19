@@ -22,6 +22,8 @@ jobs:
     steps:
       - name: Checkout main repository
         uses: actions/checkout@v4
+        # fetch all history for all branches and tags (custom)
+        fetch-depth: 1
 
       - name: Configure AWS credentials
         uses: aws-actions/configure-aws-credentials@v4
@@ -30,7 +32,7 @@ jobs:
           aws-secret-access-key: ${{ secrets.CORE_AWS_SECRET_ACCESS_KEY }}
           aws-region: ${{ env.AWS_REGION }}
 
-      - name: Parse release version from Git commit message
+      - name: Parse release version from Git commit history
         run: |
           echo "Git commit message:"
           GIT_COMMIT_MSG="$(git log -1 --pretty=format:"%s")"
