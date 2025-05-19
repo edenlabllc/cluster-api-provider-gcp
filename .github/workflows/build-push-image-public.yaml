@@ -23,7 +23,7 @@ jobs:
       - name: Checkout main repository
         uses: actions/checkout@v4
         with:
-          # fetch all history for all branches and tags (custom)
+          # fetch only single commit (default)
           fetch-depth: 1
 
       - name: Configure AWS credentials
