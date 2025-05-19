@@ -47,6 +47,8 @@ jobs:
             exit 1
           fi
           
+          readonly GIT_BRANCH="${GITHUB_REF#refs/heads/}"
+  
           # append short revision hash (equivalent to "git rev-parse --short HEAD")
           # append branch name (strip special characters)
           # NOTE: a tag name must be valid ASCII and may contain lowercase and uppercase letters, digits, underscores, periods and dashes,
@@ -74,4 +76,8 @@ jobs:
           export TAG="${VERSION}"
           
           make docker-build
-          make docker-push
+
+          readonly SOURCE_IMAGE="${ECR_REPOSITORY}/${IMAGE_NAME}-${IMAGE_ARCH}:${VERSION}"
+          readonly TARGET_IMAGE="${ECR_REPOSITORY}/${IMAGE_NAME}:${VERSION}"
+          docker tag "${SOURCE_IMAGE}" "${TARGET_IMAGE}"
+          docker push "${TARGET_IMAGE}"

@@ -66,4 +66,8 @@ jobs:
           export TAG="${VERSION}"
           
           make docker-build
-          make docker-push
+
+          readonly SOURCE_IMAGE="${ECR_REPOSITORY}/${IMAGE_NAME}-${IMAGE_ARCH}:${VERSION}"
+          readonly TARGET_IMAGE="${ECR_REPOSITORY}/${IMAGE_NAME}:${VERSION}"
+          docker tag "${SOURCE_IMAGE}" "${TARGET_IMAGE}"
+          docker push "${TARGET_IMAGE}"
