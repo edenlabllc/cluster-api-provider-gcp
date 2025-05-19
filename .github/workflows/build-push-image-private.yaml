@@ -11,9 +11,11 @@ permissions:
 
 env:
   AWS_REGION: eu-north-1
+  ECR_REGISTRY: public.ecr.aws
   ECR_REPOSITORY: 288509344804.dkr.ecr.eu-north-1.amazonaws.com
-  IMAGE_NAME: core.cluster-api-provider-gcp
+  GCP_PROJECT: cluster-api-provider-gcp
   IMAGE_ARCH: amd64
+  IMAGE_NAME: core.cluster-api-provider-gcp
 
 jobs:
   ci:

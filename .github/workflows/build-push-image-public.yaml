@@ -12,7 +12,10 @@ env:
   AWS_REGION: us-east-1
   ECR_REGISTRY: public.ecr.aws
   ECR_REPOSITORY: edenlabllc/core.cluster-api-provider-gcp
+  GCP_PROJECT: cluster-api-provider-gcp
+  IMAGE_ARCH: amd64
   IMAGE_NAME: core.cluster-api-provider-gcp
+  IMAGE_PULL_POLICY: IfNotPresent
 
 jobs:
   ci:
@@ -71,3 +74,17 @@ jobs:
           readonly TARGET_IMAGE="${ECR_REPOSITORY}/${IMAGE_NAME}:${VERSION}"
           docker tag "${SOURCE_IMAGE}" "${TARGET_IMAGE}"
           docker push "${TARGET_IMAGE}"
+
+      - name: Create GitHub release
+        run: |
+          # generate additional release assets and save them to out/
+          make set-manifest-image "MANIFEST_IMG=${ECR_REPOSITORY}/${IMAGE_NAME}" "MANIFEST_TAG=${VERSION}"
+          make set-manifest-pull-policy "PULL_POLICY=${IMAGE_PULL_POLICY}"
+          make release-manifests
+          make release-metadata
+          make release-templates
+          
+          gh release create "${VERSION}" out/* \
+            --repo "${GITHUB_REPOSITORY}" \
+            --title "${VERSION}" \
+            --notes "Release ${VERSION}"
