@@ -10,7 +10,7 @@ permissions:
 
 env:
   AWS_REGION: us-east-1
-  ECR_REPOSITORY: public.ecr.aws/edenlabllc/core.cluster-api-provider-gcp
+  ECR_REPOSITORY: public.ecr.aws/edenlabllc
   GCP_PROJECT: cluster-api-provider-gcp
   IMAGE_ARCH: amd64
   IMAGE_NAME: core.cluster-api-provider-gcp
