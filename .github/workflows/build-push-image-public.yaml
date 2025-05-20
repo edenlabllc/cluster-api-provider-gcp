@@ -7,11 +7,11 @@ on:
 
 permissions:
   contents: read
+  releases: write
 
 env:
   AWS_REGION: us-east-1
-  ECR_REGISTRY: public.ecr.aws
-  ECR_REPOSITORY: edenlabllc/core.cluster-api-provider-gcp
+  ECR_REPOSITORY: public.ecr.aws/edenlabllc/core.cluster-api-provider-gcp
   GCP_PROJECT: cluster-api-provider-gcp
   IMAGE_ARCH: amd64
   IMAGE_NAME: core.cluster-api-provider-gcp
