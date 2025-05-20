@@ -6,8 +6,7 @@ on:
       - release-*
 
 permissions:
-  contents: read
-  releases: write
+  contents: write
 
 env:
   AWS_REGION: us-east-1
