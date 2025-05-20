@@ -75,6 +75,8 @@ jobs:
           docker push "${TARGET_IMAGE}"
 
       - name: Create GitHub release
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
           # generate additional release assets and save them to out/
           make set-manifest-image "MANIFEST_IMG=${ECR_REPOSITORY}/${IMAGE_NAME}" "MANIFEST_TAG=${VERSION}"
